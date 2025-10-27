@@ -82,13 +82,25 @@ const ChatPage = () => {
 
   const handleVideoCall = () => {
     if (channel) {
-      const callUrl = `${window.location.origin}/call/${channel.id}`;
+      const callUrl = `${window.location.origin}/call/${channel.id}?type=video`;
 
       channel.sendMessage({
         text: `I've started a video call. Join me here: ${callUrl}`,
       });
 
       toast.success("Video call link sent successfully!");
+    }
+  };
+
+  const handleVoiceCall = () => {
+    if (channel) {
+      const callUrl = `${window.location.origin}/call/${channel.id}?type=voice`;
+
+      channel.sendMessage({
+        text: `I've started a voice call. Join me here: ${callUrl}`,
+      });
+
+      toast.success("Voice call link sent successfully!");
     }
   };
 
@@ -99,7 +111,7 @@ const ChatPage = () => {
       <Chat client={chatClient}>
         <Channel channel={channel}>
           <div className="w-full relative">
-            <CallButton handleVideoCall={handleVideoCall} />
+            <CallButton handleVideoCall={handleVideoCall} handleVoiceCall={handleVoiceCall} />
             <Window>
               <ChannelHeader />
               <MessageList />
