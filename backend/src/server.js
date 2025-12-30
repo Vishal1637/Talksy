@@ -12,11 +12,26 @@ import chatRoutes from "./routes/chat.route.js";
 import { connectDB } from "./lib/db.js";
 
 const app = express();
-const PORT = 5001;
+const PORT = process.env.PORT || 5001;
+
+// CORS origins - include local dev and production frontend
+const corsOrigins = [
+  "http://localhost:5173",
+  "http://localhost:5174", 
+  "http://localhost:5175",
+  "https://frontend-77arkbzd0-devlopertinders-projects.vercel.app",
+];
 
 app.use(
   cors({
-    origin: ["http://localhost:5173", "http://localhost:5174", "http://localhost:5175", "https://frontend-cvckylyn6-devlopertinders-projects.vercel.app"],
+    origin: function(origin, callback) {
+      // Allow requests with no origin (like mobile apps or curl requests)
+      if (!origin) return callback(null, true);
+      if (corsOrigins.indexOf(origin) === -1) {
+        return callback(new Error('CORS policy violation'), false);
+      }
+      return callback(null, true);
+    },
     credentials: true,
   })
 );
@@ -28,8 +43,13 @@ app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/chat", chatRoutes);
 
+// For local development
+if (process.env.NODE_ENV !== "production") {
+  app.listen(PORT, () => {
+    console.log("Server is running on port " + PORT);
+    connectDB();
+  });
+}
 
-app.listen(PORT, () => {
-  console.log("Server is running on port 5001");
-  connectDB();
-});
+// Export for Vercel
+export default app;
