@@ -20,6 +20,7 @@ const corsOrigins = [
   "http://localhost:5174", 
   "http://localhost:5175",
   "https://frontend-77arkbzd0-devlopertinders-projects.vercel.app",
+  "https://frontend-six-beta-17.vercel.app",
 ];
 
 app.use(
