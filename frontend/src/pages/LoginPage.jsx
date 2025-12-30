@@ -107,8 +107,8 @@ const LoginPage = () => {
                   <span className="label-text font-semibold text-base-content/90">Password</span>
                 </label>
                 <input
-                  type=""
-                  placeholder=""
+                  type="password"
+                  placeholder="Enter your password"
                   className="input w-full focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300 focus:scale-[1.02] bg-base-100/80 backdrop-blur-sm border-base-300/50 hover:border-primary/50"
                   value={loginData.password}
                   onChange={(e) => setLoginData({ ...loginData, password: e.target.value })}

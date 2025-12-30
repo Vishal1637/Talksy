@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 
 
+
 import authRoutes from "./routes/auth.route.js";
 import userRoutes from "./routes/user.route.js";
 import chatRoutes from "./routes/chat.route.js";
@@ -15,7 +16,7 @@ const PORT = 5001;
 
 app.use(
   cors({
-    origin: ["http://localhost:5173", "http://localhost:5175"],
+    origin: ["http://localhost:5173", "http://localhost:5174", "http://localhost:5175", "https://frontend-cvckylyn6-devlopertinders-projects.vercel.app"],
     credentials: true,
   })
 );
