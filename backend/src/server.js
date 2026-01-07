@@ -16,12 +16,12 @@ const PORT = process.env.PORT || 5001;
 
 // CORS origins - include local dev and production frontend
 const corsOrigins = [
-//   "http://localhost:5173",
-//   "http://localhost:5174",
-//   "http://localhost:5175",
-//   "https://frontend-77arkbzd0-devlopertinders-projects.vercel.app",
-//   "https://frontend-six-beta-17.vercel.app",
-//   "https://talksyapp.onrender.com"
+  "http://localhost:5173",
+  "http://localhost:5174",
+  "http://localhost:5175",
+  "https://frontend-77arkbzd0-devlopertinders-projects.vercel.app",
+  "https://frontend-six-beta-17.vercel.app",
+  "https://talksyapp.onrender.com",
 "*"
 ];
 
