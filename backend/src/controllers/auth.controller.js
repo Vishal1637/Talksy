@@ -92,7 +92,7 @@ export async function signup(req, res) {
     res.status(500).json({ message: "Internal Server Error" });
   }
 }
-//login
+//logi
 export async function login(req, res) {
   try {
     const { email, password } = req.body;
