@@ -17,10 +17,11 @@ const PORT = process.env.PORT || 5001;
 // CORS origins - include local dev and production frontend
 const corsOrigins = [
   "http://localhost:5173",
-  "http://localhost:5174", 
+  "http://localhost:5174",
   "http://localhost:5175",
   "https://frontend-77arkbzd0-devlopertinders-projects.vercel.app",
   "https://frontend-six-beta-17.vercel.app",
+  "https://talksyapp.onrender.com"
 ];
 
 app.use(
@@ -44,13 +45,13 @@ app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/chat", chatRoutes);
 
-// For local development
-if (process.env.NODE_ENV !== "production") {
-  app.listen(PORT, () => {
-    console.log("Server is running on port " + PORT);
-    connectDB();
-  });
-}
+// Connect to DB and start server
+connectDB();
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+  console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+});
 
 // Export for Vercel
 export default app;
