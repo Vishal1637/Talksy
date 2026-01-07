@@ -4,5 +4,6 @@ import axios from "axios";
 const BASE_URL = "https://talksyapp.onrender.com";
 export const axiosInstance = axios.create({
   baseURL: BASE_URL,
-  withCredentials: true, // send cookies with the request
+  withCredentials: true,
+   // send cookies with the request
 });
